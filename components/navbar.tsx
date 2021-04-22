@@ -1,17 +1,16 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { UserContext } from "../lib/context";
+import { auth } from "../lib/firebase";
 
 export default function Navbar() {
   const { user, username } = useContext(UserContext);
   return (
-    <nav className=" navbar">
-      <ul className="flex">
-        <li className="mr-6">
+    <nav className="navbar">
+      <ul>
+        <li>
           <Link href="/">
-            <button className="font-sans text-2xl inline-block rounded-md py-3 px-4 bg-gray-900 text-white">
-              FEED
-            </button>
+            <button className="btn-logo">NXT</button>
           </Link>
         </li>
 
@@ -19,13 +18,16 @@ export default function Navbar() {
         {username && (
           <>
             <li className="push-left">
+              <button onClick={() => auth.signOut()}>Sign Out</button>
+            </li>
+            <li>
               <Link href="/admin">
                 <button className="btn-blue">Write Posts</button>
               </Link>
             </li>
             <li>
               <Link href={`/${username}`}>
-                <img src={user?.photoURL} />
+                <img src={user?.photoURL || "/hacker.png"} />
               </Link>
             </li>
           </>
@@ -35,9 +37,7 @@ export default function Navbar() {
         {!username && (
           <li>
             <Link href="/enter">
-              <button className="inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white">
-                Log in
-              </button>
+              <button className="btn-blue">Log in</button>
             </Link>
           </li>
         )}

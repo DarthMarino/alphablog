@@ -8,6 +8,7 @@ export function useUserData() {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
+    // turn off realtime subscription
     let unsubscribe;
 
     if (user) {
