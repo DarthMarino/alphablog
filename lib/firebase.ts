@@ -1,10 +1,10 @@
 import firebase from "firebase/app";
-import { loadEnvConfig } from "@next/env";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
 // Added ENVs to .env file for global variables.
+// NextJS uses NEXT_PUBLIC as prefix
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_AUTH_DOM,
@@ -14,16 +14,9 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-console.log(firebaseConfig);
-
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-export const storage = firebase.storage();
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 /**`
  * Gets a users/{uid} document with username
@@ -49,3 +42,9 @@ export function postToJSON(doc) {
     updatedAt: data.updatedAt.toMillis(),
   };
 }
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+export const storage = firebase.storage();
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export const fromMillis = firebase.firestore.Timestamp.fromMillis;
