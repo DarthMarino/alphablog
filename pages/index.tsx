@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { firestore, fromMillis, postToJSON } from "../lib/firebase";
 import PostFeed from "../components/postFeed";
+import "../styles/Home.module.css";
 
 // Max post to query per page
 const LIMIT = 1;
