@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { auth, storage, STATE_CHANGED } from "../lib/firebase";
 import Loader from "./loader";
 
@@ -9,7 +9,7 @@ export default function ImageUploader() {
   const [downloadURL, setDownloadURL] = useState(null);
 
   // Creates a Firebase Upload Task
-  const uploadFile = async (e) => {
+  const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
     // Get the file
     const file = Array.from(e.target.files)[0];
     const extension = file.type.split("/")[1];
@@ -25,7 +25,7 @@ export default function ImageUploader() {
 
     // Listen to updates to upload task
     task.on(STATE_CHANGED, (snapshot) => {
-      const pct = (
+      const pct = +(
         (snapshot.bytesTransferred / snapshot.totalBytes) *
         100
       ).toFixed(0);

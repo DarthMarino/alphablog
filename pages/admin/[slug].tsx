@@ -3,7 +3,7 @@ import AuthCheck from "@components/authCheck";
 import { firestore, auth, serverTimestamp } from "@lib/firebase";
 import ImageUploader from "@components/imageUploader";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
@@ -65,7 +65,14 @@ function PostManager() {
 }
 
 function PostForm({ defaultValues, postRef, preview }) {
-  const { register, errors, handleSubmit, formState, reset, watch } = useForm({
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    formState,
+    reset,
+    watch,
+  } = useForm({
     defaultValues,
     mode: "onChange",
   });
@@ -78,7 +85,6 @@ function PostForm({ defaultValues, postRef, preview }) {
       published,
       updatedAt: serverTimestamp(),
     });
-
     reset({ content, published });
 
     toast.success("Post updated successfully!");
@@ -96,8 +102,7 @@ function PostForm({ defaultValues, postRef, preview }) {
         <ImageUploader />
 
         <textarea
-          name="content"
-          ref={register({
+          {...register("content", {
             maxLength: { value: 20000, message: "content is too long" },
             minLength: { value: 10, message: "content is too short" },
             required: { value: true, message: "content is required" },
@@ -111,9 +116,8 @@ function PostForm({ defaultValues, postRef, preview }) {
         <fieldset>
           <input
             className={styles.checkbox}
-            name="published"
             type="checkbox"
-            ref={register}
+            {...register("published")}
           />
           <label>Published</label>
         </fieldset>
