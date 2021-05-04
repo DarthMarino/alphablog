@@ -1,66 +1,48 @@
-.container {
-  min-height: 100vh;
-  display: flex;
-}
-
-.container section {
-  width: 60vw;
-  margin-right: 1rem;
-}
-
-.container aside {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  min-width: 250px;
-  min-height: 200px;
-  text-align: center;
-  position: sticky;
-  top: 80px;
-  height: 0;
-}
-
-.hidden {
-  display: none;
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-}
-
-.controls textarea {
-  height: 60vh;
-  border: none;
-  outline: none;
-  padding: 0.5rem;
-  font-size: 1.25rem;
-}
-
-.input {
-  outline: none;
-  border: none;
-  font-size: 2.5rem;
-  width: 100%;
-  padding: 5px 10px;
-}
-
-.checkbox {
-  display: inline;
-  width: auto;
-}
-
-@media only screen and (max-width: 768px) {
+@import "./tailwind.css";
+@layer components {
   .container {
-    flex-direction: column;
+    @apply min-h-screen flex;
   }
 
   .container section {
-    width: 100%;
+    @apply w-3/5 mr-4;
   }
 
   .container aside {
-    width: 100%;
-    position: relative;
+    @apply flex flex-col w-1/5 min-w-container min-h-containerAdmin text-center sticky top-20 h-0;
+  }
+
+  .hidden {
+    @apply hidden;
+  }
+
+  .controls {
+    @apply flex flex-col;
+  }
+
+  .controls textarea {
+    @apply h-3/5 border-none outline-none p-2 text-xl;
+  }
+
+  .input {
+    @apply outline-none border-none text-4xl w-full px-3 py-1;
+  }
+
+  .checkbox {
+    @apply inline w-auto;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .container {
+      @apply flex-col;
+    }
+
+    .container section {
+      @apply w-full;
+    }
+
+    .container aside {
+      @apply w-full relative;
+    }
   }
 }

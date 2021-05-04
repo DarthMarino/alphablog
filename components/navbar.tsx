@@ -10,7 +10,7 @@ export default function Navbar() {
       <ul>
         <li>
           <Link href="/">
-            <button className="btn-logo">NXT</button>
+            <button className="btn-logo">Alphablog</button>
           </Link>
         </li>
 
@@ -22,7 +22,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/admin">
-                <button className="btn-blue">Write Posts</button>
+                <button className="btn-iceberg">Write Posts</button>
               </Link>
             </li>
             <li>
@@ -37,7 +37,7 @@ export default function Navbar() {
         {!username && (
           <li>
             <Link href="/enter">
-              <button className="btn-blue">Log in</button>
+              <button className="btn-iceberg">Log in</button>
             </Link>
           </li>
         )}
