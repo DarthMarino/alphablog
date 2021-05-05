@@ -91,7 +91,7 @@ function CreateNewPost() {
         className={styles.input}
       />
       <p>
-        <strong>Slug:</strong> {slug}
+        <strong>Write the post title ↑</strong> {slug}
       </p>
       <button type="submit" disabled={!isValid} className="btn-green">
         Create New Post

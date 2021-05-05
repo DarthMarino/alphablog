@@ -7,7 +7,12 @@ export default function PostContent({ post }) {
     typeof post?.createdAt === "number"
       ? new Date(post.createdAt)
       : post.createdAt.toDate();
-
+  const returnDate = (isostring) => {
+    const date = new Date(`${isostring}`);
+    return (
+      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+    );
+  };
   return (
     <div className="card">
       <h1>{post?.title}</h1>
@@ -16,8 +21,9 @@ export default function PostContent({ post }) {
         <Link href={`/${post.username}/`}>
           <a className="text-info">@{post.username}</a>
         </Link>{" "}
-        on {createdAt.toISOString()}
+        on {returnDate(createdAt.toISOString())}
       </span>
+
       <ReactMarkdown>{post?.content}</ReactMarkdown>
     </div>
   );

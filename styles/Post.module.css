@@ -1,4 +1,3 @@
-@import "./tailwind.css";
 @layer components {
   .container {
     @apply min-h-screen flex;

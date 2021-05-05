@@ -39,12 +39,16 @@ function PostItem({ post, admin = false }) {
         <>
           <Link href={`/admin/${post.slug}`}>
             <h3>
+              <br />
               <button className="btn-blue">Edit</button>
             </h3>
           </Link>
 
           {post.published ? (
-            <p className="text-success">Live</p>
+            <>
+              <br />
+              <p className="text-success">Live</p>
+            </>
           ) : (
             <p className="text-danger">Unpublished</p>
           )}

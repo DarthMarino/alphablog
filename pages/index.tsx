@@ -1,11 +1,12 @@
 import toast from "react-hot-toast";
-import { useState } from "react";
+import React, { useState } from "react";
 import { firestore, fromMillis, postToJSON } from "../lib/firebase";
 import PostFeed from "../components/postFeed";
 import "../styles/Home.module.css";
+import Loader from "components/loader";
 
 // Max post to query per page
-const LIMIT = 1;
+const LIMIT = 10;
 
 export async function getServerSideProps(context) {
   const postsQuery = firestore
@@ -50,8 +51,26 @@ export default function Home(props) {
   };
 
   return (
-    <div>
-      <PostFeed posts={posts} />
+    <div className="card-container">
+      <div className="card card-info">
+        <h2>Alphablog</h2>
+        <p>
+          Welcome! This app is built with Next.js and Firebase and is inspired
+          by Dev.to.
+        </p>
+        <p>
+          Sign up for an 👨‍🎤 account, ✍️ you can write posts, then 💞 heart
+          content created by other users.
+        </p>
+      </div>
+      <PostFeed posts={posts} admin={null} />
+      {!loading && !postsEnd && (
+        <button onClick={getMorePosts}>Load more</button>
+      )}
+
+      <Loader show={loading} />
+
+      {postsEnd && "You have reached the end!"}
     </div>
   );
 }

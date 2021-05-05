@@ -1,4 +1,3 @@
-@import "./tailwind.css";
 @layer components {
   .container {
     @apply min-h-screen flex;
@@ -10,10 +9,6 @@
 
   .container aside {
     @apply flex flex-col w-1/5 min-w-container min-h-containerAdmin text-center sticky top-20 h-0;
-  }
-
-  .hidden {
-    @apply hidden;
   }
 
   .controls {

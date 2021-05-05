@@ -1,5 +1,6 @@
-@import "./tailwind.css";
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   html,
@@ -62,7 +63,7 @@
   }
 
   .navbar img {
-    @apply rounded-full w-12 h-12 cursor-pointer;
+    @apply rounded-full ml-1 w-12 h-12 cursor-pointer;
   }
 
   .navbar li {
@@ -73,7 +74,7 @@
 
   .btn,
   button {
-    @apply bg-gray border-none text-defaultText px-4 py-3 flex items-center text-center justify-center no-underline font-sans font-bold rounded cursor-pointer mx-2;
+    @apply bg-gray border-none text-defaultText px-4 py-3 flex items-center text-center justify-center no-underline font-sans font-bold rounded cursor-pointer;
   }
 
   @media only screen and (max-width: 768px) {
@@ -89,6 +90,10 @@
   button:disabled,
   button[disabled] {
     @apply cursor-not-allowed brightness-50;
+  }
+
+  button.btn-nav {
+    @apply mx-4;
   }
 
   button.btn-iceberg {
@@ -118,19 +123,20 @@
   /* Cards */
 
   .card {
-    @apply p-8 mx-4 bg-white border-gray border border-solid rounded-lg;
+    @apply p-8 my-4 mx-0 bg-white border border-solid border-gray rounded-lg;
   }
-
   .card footer {
     @apply flex;
   }
 
   .card-img-center {
-    @apply w-1/5 block m-auto rounded-full max-w-card-img;
+    @apply w-1/5 block m-auto rounded-full max-w-cardImg;
   }
-
   .card-info {
-    @apply text-white bg-blue;
+    @apply text-white bg-iceberg;
+  }
+  .card-container {
+    @apply mx-8;
   }
 
   /* Loader */
@@ -150,7 +156,6 @@
       @apply transform rotate-360;
     }
   }
-
   /* File uploads */
 
   input[type="file"] {
@@ -160,14 +165,11 @@
   .upload-snippet {
     @apply w-3/4 ml-auto bg-white p-1 my-1;
   }
+
   /* Utilities */
 
   .push-left {
     @apply ml-auto;
-  }
-
-  .text-sm {
-    @apply text-sm;
   }
 
   .text-danger {
@@ -176,11 +178,7 @@
 
   .text-success {
     @apply font-bold text-green;
-
-    font-weight: bold;
-    color: var(--color-green);
   }
-
   .text-info {
     @apply font-bold text-iceberg;
   }
@@ -191,9 +189,5 @@
 
   .box-center {
     @apply flex flex-col content-center text-center;
-  }
-
-  .hidden {
-    @apply hidden;
   }
 }

@@ -15,15 +15,18 @@ module.exports = {
       margin: {
         error: "30%",
       },
-      width: {
-        "card-img": "150px",
-      },
       maxWidth: {
         container: "250px",
         grid: "800px",
+        cardImg: "150px",
+      },
+      minWidth: {
+        container: "250px",
       },
       maxHeight: {
         container: "300px",
+      },
+      minHeight: {
         containerAdmin: "250px",
       },
       rotate: {

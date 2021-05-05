@@ -22,7 +22,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/admin">
-                <button className="btn-iceberg">Write Posts</button>
+                <button className=" btn-nav btn-iceberg">Writer</button>
               </Link>
             </li>
             <li>
